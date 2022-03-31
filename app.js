@@ -12,7 +12,7 @@ app.get('/content', function(req, res){
     if(req.query.contentname && req.query.contentname!==""){
        
         try{
-            const file = `${__dirname}/public/contents/${req.query.contentname}`;           
+            const file = `${__dirname}/src/public/contents/${req.query.contentname}`;           
             res.download(file); // Set disposition and send it.
         }catch(e){     
             res.send({error:"File is not exist"})
@@ -22,7 +22,7 @@ app.get('/content', function(req, res){
     }    
   });
 
-app.listen(3000,(err)=>{
+app.listen(process.env.PORT || 3000,(err)=>{
     if(!err){
         console.log("server is running")
     }
